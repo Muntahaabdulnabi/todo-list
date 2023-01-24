@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import TodoList from "./components/TodoList";
 import { nanoid } from 'nanoid';
 import Search from "./components/Search";
@@ -12,19 +12,7 @@ function App() {
 
   const [darkMode, setDarkMode] = useState(false);
 
-  useEffect(() => {
-    const savedTodos = JSON.parse(localStorage.getItem('react-todos-app-data')
-    );
 
-    if (savedTodos) {
-      setTodos(savedTodos);
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('react-todos-app-data', JSON.stringify(todos)
-    );
-  }, [todos]);
 
   const addTodo = (text) => {
     const date = new Date();
