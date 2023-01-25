@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TodoList from "./components/TodoList";
 import { nanoid } from 'nanoid';
 import Search from "./components/Search";
@@ -6,7 +6,7 @@ import Header from "./components/Header";
 
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(JSON.parse(localStorage.getItem("todos")) || []);
 
   const [searchText, setSearchText] = useState('');
 
@@ -33,6 +33,10 @@ function App() {
   const removeTodos = () => {
     setTodos([]);
   }
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  })
 
 
   return (
